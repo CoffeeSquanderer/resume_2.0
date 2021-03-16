@@ -44,7 +44,7 @@ body {
 .section-title {
     font-weight: 100;
     font-size: 1.5rem;
-    margin-bottom: var(--spacer4);
+    margin-bottom: var(--spacer3);
 }
 
 .section-title,
@@ -136,6 +136,10 @@ body {
     font-weight: bold;
     margin-top: var(--spacer2);
     color: var(--blue2);
+}
+
+.header-contacts a {
+    color: inherit;
 }
 
 .header-contacts li {
@@ -284,24 +288,55 @@ body {
 
 /* EXPERTISE */
 
-.expertise {
+.expertise {}
 
+.expertise h3 {
+    margin: var(--spacer2) 0;
+}
+
+.expertise-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacer2);
+}
+
+.expertise-list li {
+    font-size: 1.17rem;
+}
+
+.expertise-list li:before {
+    background-image: url(./icons/circle-line.svg);
+    margin-right: 0;
 }
 
 /* LANGUAGE */
 
-.languages {
+.languages {}
 
+.language-list li {
+    margin-bottom: var(--spacer2);
+    font-size: 1.17rem;
+}
+
+.language-list li:before {
+    background-image: url(./icons/globe.svg);
+    margin-right: 0;    
 }
 
 /* EDUCATION */
 
-.education {
+.education {}
 
+.education-item {
+    display: grid;
+    gap: var(--spacer1);
 }
 
 /* PERSONAL */
 
-.personal {
+.personal {}
 
+.personal-items {
+    display: grid;
+    gap: var(--spacer2);
 }
