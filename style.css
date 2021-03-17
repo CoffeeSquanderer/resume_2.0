@@ -1,6 +1,5 @@
-/* TODO: normalize here */
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,700;1,300&family=Roboto:wght@300;400;700&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,700;1,300&family=Roboto:wght@300;400;700&display=swap');
 
 :root {
     font-size: 12px;
@@ -187,7 +186,7 @@ body {
 .company-background {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    margin-top: var(--spacer3);
+    margin-top: var(--spacer2);
 }
 
 .timespan {
@@ -209,11 +208,24 @@ body {
 }
 
 .project-description li {
-    padding-bottom: var(--spacer4);
+    margin-top: var(--spacer4);
+}
+
+.project-description li:first-of-type {
+    margin-top: 0;
+}
+
+.pd-role,
+.pd-achievements,
+.bsa-item {
+    opacity: 1;
+    max-height: auto;
+    transition: all .5s;
 }
 
 .pd-explained:before {
     background-image: url(./icons/question.svg);
+    transition: all .5s;
 }
 
 .pd-role:before {
@@ -224,24 +236,26 @@ body {
     background-image: url(./icons/muscles.svg);
 }
 
-.description-revealer {
+.revealer {
     cursor: pointer;
     grid-column: 1 / 3;
     height: 20px;
     border-radius: .4rem;
     background: transparent;
     color: var(--blue5);
-    border: 1px solid var(--blue5);
+    border-width: 0;
     justify-self: center;
     padding: 0 20px;
+    z-index: 2;
+    border-color: var(--blue5);
+    border-style: solid;
+    outline: none;
 }
 
-.description-revealer:hover,
-.description-revealer:focus {
+.revealer:hover,
+.revealer:active {
     color: var(--blue2);
-    border: 1px solid var(--blue2);
-    transition: all .5s ease;
-    outline: none;
+    border-color: var(--blue2);
 }
 
 .tech-stack {
@@ -257,12 +271,19 @@ body {
     grid-column: 1 / 3;
     display: grid;
     gap: var(--spacer1);
-    margin-top: var(--spacer1);
+}
+
+.company-background:last-of-type .project:last-of-type::after {
+    display: none;
 }
 
 .bsa-wrapper li {
     grid-column: 1 / 3;
     padding-bottom: var(--spacer4);
+}
+
+.bsa-title {
+    margin-top: 0;
 }
 
 .bsa-item {
@@ -285,6 +306,46 @@ body {
     margin-bottom: -.25rem;
 }
 
+[data-hiding="true"] :is(
+    .pd-role,
+    .pd-achievements,
+    .bsa-item,
+) {
+    margin: 0;
+    max-height: 0;
+    opacity: 0;
+    padding: 0;
+}
+
+[data-hiding="true"] .bsa-wrapper {
+    gap: 0;
+}
+
+[data-hiding="true"] .custom-list li:before {
+    width: 0;
+    opacity: 0;
+    padding: 0;
+    margin: 0;
+    /* margin-right: -.25rem; */
+}
+
+[data-hiding="true"] .revealer {
+    border-top-width: 0;
+    border-bottom-width: 1px;
+}
+
+[data-hiding="false"] .revealer {
+    border-bottom-width: 0;
+    border-top-width: 1px;
+}
+
+[data-hiding="true"] [data-revealer]:after {
+    content: '▼ Read more';
+}
+
+[data-hiding="false"] [data-revealer]:after {
+    content: '▲ Hide details';
+}
 
 /* EXPERTISE */
 
@@ -300,12 +361,10 @@ body {
     gap: var(--spacer2);
 }
 
-.expertise-list li {
-    font-size: 1.17rem;
-}
-
 .expertise-list li:before {
     background-image: url(./icons/circle-line.svg);
+    background-size: .8rem;
+    margin-bottom: -.1rem;
     margin-right: 0;
 }
 
@@ -315,12 +374,13 @@ body {
 
 .language-list li {
     margin-bottom: var(--spacer2);
-    font-size: 1.17rem;
 }
 
 .language-list li:before {
     background-image: url(./icons/globe.svg);
-    margin-right: 0;    
+    margin-right: 0;
+    background-size: .8rem;
+    margin-bottom: -.1rem;
 }
 
 /* EDUCATION */
