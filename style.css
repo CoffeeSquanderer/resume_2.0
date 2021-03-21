@@ -9,12 +9,42 @@
     --spacer3: 30px;
     --spacer4: 5px;
 
+    --phSize: 74px;
+
     --blue1: #04050D;
     --blue2: #192640;
     --blue3: #253659;
     --blue4: #0D1826;
     --blue5: #6D7B8C;
 }
+
+@media (min-width: 481px) {
+    :root {
+        font-size: 14px;
+
+        --phSize: 90px;
+
+        --spacer1: 12px;
+        --spacer2: 24px;
+        --spacer3: 36px;
+        --spacer4: 6px;
+    }
+}
+
+@media (min-width: 769px) {
+    :root {
+        font-size: 16px;
+
+        --phSize: 120px;
+
+        --spacer1: 14px;
+        --spacer2: 28px;
+        --spacer3: 42px;
+        --spacer4: 7px;
+    }
+}
+
+@media (min-width: 1025px) {}
 
 h1, h2, h3, h4, h5, h6 {
     margin-block-start: 0;
@@ -29,6 +59,7 @@ body {
 
 .wrapper {
     margin: 0 auto;
+    max-width: 1024px;
 }
 
 .section {
@@ -109,14 +140,14 @@ body {
 
 .header-info {
     display: grid;
-    grid-template-columns: 74px auto;
+    grid-template-columns: var(--phSize) auto;
     align-items: center;
-    gap: 5px 10px;
+    gap: var(--spacer4) var(--spacer2);
     color: var(--blue3)
 }
 
 .header-photo {
-    width: 74px;
+    width: var(--phSize);
     grid-row: 1 / span 2;
     border-radius: 20%;
 }
@@ -171,6 +202,17 @@ body {
     background-image: url(./icons/phone.svg);
 }
 
+@media (min-width: 769px) {
+    .header {
+        grid-template-columns: 1fr 300px;
+        justify-content: space-between;
+    }
+
+    .header-contacts {
+        margin-top: 0;
+    }
+}
+
 /* INTRO */
 
 .intro {
@@ -191,8 +233,8 @@ body {
 
 .timespan {
     font-weight: 100;
-    align-self: end;
     color: var(--blue4);
+    text-align: right;
 }
 
 .project {
@@ -250,6 +292,12 @@ body {
     border-color: var(--blue5);
     border-style: solid;
     outline: none;
+}
+
+@media (min-width: 769px) {
+    .revealer {
+        margin-top: var(--spacer1);
+    }
 }
 
 .revealer:hover,
@@ -355,9 +403,17 @@ body {
 }
 
 .expertise-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacer2);
+    columns: 2;
+}
+
+.expertise-list li {
+    margin-bottom: var(--spacer1);
+}
+
+@media (min-width: 1025px) {
+    .expertise-list {
+        columns: 3;
+    }
 }
 
 .expertise-list li:before {
@@ -372,7 +428,7 @@ body {
 .languages {}
 
 .language-list li {
-    margin-bottom: var(--spacer2);
+    margin-bottom: var(--spacer1);
 }
 
 .language-list li:last-of-type {
@@ -393,6 +449,7 @@ body {
 .education-item {
     display: grid;
     gap: var(--spacer1);
+    grid-template-columns: 2fr 1fr;
 }
 
 /* PERSONAL */
