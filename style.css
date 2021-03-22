@@ -202,7 +202,7 @@ body {
     background-image: url(./icons/phone.svg);
 }
 
-@media (min-width: 769px) {
+@media print, (min-width: 769px) {
     .header {
         grid-template-columns: 1fr 300px;
         justify-content: space-between;
@@ -294,12 +294,6 @@ body {
     outline: none;
 }
 
-@media (min-width: 769px) {
-    .revealer {
-        margin-top: var(--spacer1);
-    }
-}
-
 .revealer:hover,
 .revealer:active {
     color: var(--blue2);
@@ -354,44 +348,58 @@ body {
     margin-bottom: -.25rem;
 }
 
-[data-hiding="true"] :is(
-    .pd-role,
-    .pd-achievements,
-    .bsa-item,
-) {
-    margin: 0;
-    max-height: 0;
-    opacity: 0;
-    padding: 0;
+@media screen {
+    [data-hiding="true"] :is(
+        .pd-role,
+        .pd-achievements,
+        .bsa-item,
+    ) {
+        margin: 0;
+        max-height: 0;
+        opacity: 0;
+        padding: 0;
+    }
+
+    [data-hiding="true"] .bsa-wrapper {
+        gap: 0;
+    }
+    
+    [data-hiding="true"] .custom-list li:before {
+        width: 0;
+        opacity: 0;
+        padding: 0;
+        margin: 0;
+    }
+    
+    [data-hiding="true"] .revealer {
+        border-top-width: 0;
+        border-bottom-width: 1px;
+    }
+    
+    [data-hiding="false"] .revealer {
+        border-bottom-width: 0;
+        border-top-width: 1px;
+    }
+    
+    [data-hiding="true"] [data-revealer]:after {
+        content: '▼ Read more';
+    }
+    
+    [data-hiding="false"] [data-revealer]:after {
+        content: '▲ Hide details';
+    }
 }
 
-[data-hiding="true"] .bsa-wrapper {
-    gap: 0;
+@media (min-width: 769px) {
+    .revealer {
+        margin-top: var(--spacer1);
+    }
 }
 
-[data-hiding="true"] .custom-list li:before {
-    width: 0;
-    opacity: 0;
-    padding: 0;
-    margin: 0;
-}
-
-[data-hiding="true"] .revealer {
-    border-top-width: 0;
-    border-bottom-width: 1px;
-}
-
-[data-hiding="false"] .revealer {
-    border-bottom-width: 0;
-    border-top-width: 1px;
-}
-
-[data-hiding="true"] [data-revealer]:after {
-    content: '▼ Read more';
-}
-
-[data-hiding="false"] [data-revealer]:after {
-    content: '▲ Hide details';
+@media print {
+    .revealer {
+        display: none;
+    }
 }
 
 /* EXPERTISE */
