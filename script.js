@@ -1,5 +1,5 @@
 const setReadmoreButtons = () => {
-    const PARENT_DATAATTR = 'hiding';
+    const PARENT_DATAATTR = 'revealed';
     const REVEALER_DATAATTR = 'revealer';
 
     const parents = document.querySelectorAll(`[data-${PARENT_DATAATTR}]`);
