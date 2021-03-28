@@ -211,12 +211,18 @@ body {
 
 @media print, (min-width: 769px) {
     .header {
-        grid-template-columns: 1fr 300px;
+        grid-template-columns: 1fr 350px;
         justify-content: space-between;
     }
 
     .header-contacts {
         margin-top: 0;
+    }
+}
+
+@media (min-width: 1025px) {
+    .header {
+        grid-template-columns: 1fr 450px;
     }
 }
 
@@ -495,4 +501,42 @@ body {
 .personal-items {
     display: grid;
     gap: var(--spacer2);
+}
+
+/* PDF */
+
+.pdf-btn {
+    outline: none;
+    border: none;
+    position: fixed;
+    background: url(./icons/download.svg) var(--blue5) center no-repeat;
+    background-size: 50%;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid var(--blue5);
+    box-shadow: 0 0 5px var(--blue3);
+    width: 30px;
+    height: 30px;
+    right: 20px;
+    top: 20px;
+}
+
+@media (min-width: 481px) {
+    .pdf-btn {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+@media (min-width: 1025px) {
+    .pdf-btn {
+        right: 40px;
+        top: 40px;
+    }
+}
+
+@media print {
+    .pdf-btn {
+        display: none;
+    }
 }
