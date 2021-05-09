@@ -498,9 +498,14 @@ body {
 
 .personal {}
 
-.personal-items {
+.personal-item {
     display: grid;
-    gap: var(--spacer2);
+    gap: var(--spacer1);
+    margin-bottom: var(--spacer2);
+}
+
+.personal-item:last-of-type {
+    margin-bottom: 0;
 }
 
 /* PDF */
